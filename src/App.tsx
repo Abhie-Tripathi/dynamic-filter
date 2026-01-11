@@ -1,10 +1,13 @@
+
 import { useState } from 'react';
-import { Box, CssBaseline, ThemeProvider, createTheme, Typography, Container, Paper, Grid, CardContent, Card } from '@mui/material';
+import { Box, CssBaseline, ThemeProvider, createTheme, Typography, Container, Grid, CardContent, Card, Button, Stack } from '@mui/material';
 import { MOCK_DATA } from './data/mockData';
 import { FilterBuilder } from './components/filter/FilterBuilder';
 import { DataTable } from './components/DataTable';
 import { useDataFilter } from './hooks/useDataFilter';
 import { FilterCondition, FieldDefinition } from './types/filter';
+import { exportToCSV, exportToJSON } from './utils/exportUtils';
+import { Download as DownloadIcon, FileJson as JsonIcon } from 'lucide-react';
 
 const theme = createTheme({
   palette: {
@@ -123,6 +126,14 @@ function App() {
   const [conditions, setConditions] = useState<FilterCondition[]>([]);
   const { filteredData, totalCount, filteredCount } = useDataFilter(MOCK_DATA, conditions);
 
+  const handleExportCSV = () => {
+    exportToCSV(filteredData, 'filtered-data');
+  };
+
+  const handleExportJSON = () => {
+    exportToJSON(filteredData, 'filtered-data');
+  };
+
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
@@ -145,10 +156,32 @@ function App() {
                     <Typography variant="body2">Total Records:</Typography>
                     <Typography variant="body2" fontWeight="bold">{totalCount}</Typography>
                   </Box>
-                  <Box display="flex" justifyContent="space-between">
+                  <Box display="flex" justifyContent="space-between" mb={2}>
                     <Typography variant="body2">Showing:</Typography>
                     <Typography variant="body2" fontWeight="bold" color="primary">{filteredCount}</Typography>
                   </Box>
+
+                  <Typography variant="subtitle2" color="text.secondary" gutterBottom sx={{ mt: 2 }}>
+                    Export Actions
+                  </Typography>
+                  <Stack direction="column" spacing={1}>
+                    <Button 
+                      variant="outlined" 
+                      fullWidth 
+                      startIcon={<DownloadIcon size={16} />}
+                      onClick={handleExportCSV}
+                    >
+                      Export CSV
+                    </Button>
+                    <Button 
+                      variant="outlined" 
+                      fullWidth 
+                      startIcon={<JsonIcon size={16} />}
+                      onClick={handleExportJSON}
+                    >
+                      Export JSON
+                    </Button>
+                  </Stack>
                 </CardContent>
               </Card>
             </Box>

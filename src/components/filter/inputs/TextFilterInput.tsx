@@ -9,7 +9,7 @@ interface TextFilterInputProps {
   operator: FilterCondition['operator'];
 }
 
-export const TextFilterInput: React.FC<TextFilterInputProps> = ({ value, onChange, operator }) => {
+export const TextFilterInput: React.FC<TextFilterInputProps> = ({ value, onChange }) => {
   return (
     <TextField
       size="small"

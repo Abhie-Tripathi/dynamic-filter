@@ -1,10 +1,14 @@
 
-import React, { useState } from 'react';
-import { 
-  Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper, 
-  TablePagination, TableSortLabel, Box, Chip
+import {
+  Chip,
+  Paper,
+  Table, TableBody, TableCell, TableContainer, TableHead,
+  TablePagination,
+  TableRow,
+  TableSortLabel
 } from '@mui/material';
-import { Employee, Address } from '../data/mockData';
+import React, { useState } from 'react';
+import { Address, Employee } from '../data/mockData';
 
 interface DataTableProps {
   data: Employee[];
@@ -29,7 +33,7 @@ export const DataTable: React.FC<DataTableProps> = ({ data }) => {
     setOrderBy(property);
   };
 
-  const handleChangePage = (event: unknown, newPage: number) => {
+  const handleChangePage = (_event: unknown, newPage: number) => {
     setPage(newPage);
   };
 

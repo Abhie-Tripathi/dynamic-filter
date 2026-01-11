@@ -1,5 +1,5 @@
 
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Box, MenuItem, Select, IconButton, FormControl, InputLabel } from '@mui/material';
 import { Trash2 } from 'lucide-react';
 import { FilterCondition, FieldDefinition, Operator } from '../../types/filter';

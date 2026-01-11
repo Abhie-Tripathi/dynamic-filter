@@ -1,6 +1,6 @@
 
 import { useMemo } from 'react';
-import { FilterCondition, Operator } from '../types/filter';
+import { FilterCondition } from '../types/filter';
 import { useDebounce } from './useDebounce';
 
 // Helper to access nested properties safely

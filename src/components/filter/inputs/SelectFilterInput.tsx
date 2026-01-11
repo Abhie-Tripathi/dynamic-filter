@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Select, MenuItem, Checkbox, ListItemText, FormControl, InputLabel } from '@mui/material';
+import { Select, MenuItem, Checkbox, ListItemText, FormControl } from '@mui/material';
 import { FilterCondition } from '../../../types/filter';
 
 interface SelectFilterInputProps {
